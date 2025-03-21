@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Agreements</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form { max-width: 600px; margin: auto; }
+        label { font-weight: bold; }
+        input, select, textarea { width: 100%; margin-bottom: 10px; padding: 8px; }
+        button { background-color: #4CAF50; color: white; padding: 10px; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+    <h2>Service Agreement Form</h2>
+    <form id="agreementForm">
+        <label for="clientName">Client Name:</label>
+        <input type="text" id="clientName" name="clientName" required>
+
+        <label for="clientAddress">Client Address:</label>
+        <input type="text" id="clientAddress" name="clientAddress" required>
+
+        <label for="serviceType">Select Service:</label>
+        <select id="serviceType" name="serviceType" required>
+            <option value="landscaping">Landscaping Services</option>
+            <option value="creditRepair">Credit Repair Services</option>
+            <option value="rosca">Rotating Savings & Credit Agreement (ROSCA)</option>
+        </select>
+
+        <label for="agreementText">Agreement Terms:</label>
+        <textarea id="agreementText" rows="10" readonly></textarea>
+
+        <label for="signature">Client Signature (Type Full Name):</label>
+        <input type="text" id="signature" name="signature" required>
+
+        <button type="submit">Submit Agreement</button>
+    </form>
+
+    <script>
+        document.getElementById('serviceType').addEventListener('change', function() {
+            let agreementText = document.getElementById('agreementText');
+            let selectedService = this.value;
+            
+            if (selectedService === "landscaping") {
+                agreementText.value = "Landscaping Agreement: The Service Provider agrees to provide lawn care, tree trimming, and gardening services...";
+            } else if (selectedService === "creditRepair") {
+                agreementText.value = "Credit Repair Agreement: The Service Provider agrees to provide credit report analysis, dispute filing, and financial consultation...";
+            } else if (selectedService === "rosca") {
+                agreementText.value = "ROSCA Agreement: Participants agree to contribute a fixed amount periodically to form a collective fund...";
+            }
+        });
+    </script>
+</body>
+</html>
